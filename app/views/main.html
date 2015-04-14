@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <h1>${{money}}</h1>
+  <h2>
+    Commencé il y a <span ng-bind="dayPassed"></span> jour(s)
+  </h2>
+  <p>
+    <button ng-click="wait()">Attendre</button>
+  </p>
+
+  <section>
+    <header>
+      <h1>Buy some stones !</h1>
+      <button ng-click="save()">Save</button>
+      <button ng-click="reset()">Reset</button>
+    </header>
+    <div class="flex">
+      <article class="item" id="{{item.name}}" ng-repeat="item in items">
+        <header>
+          <h2>{{item.name}}</h2>
+          <aside class="variation" ng-bind-html="item.variation"></aside>
+          <div class="counter"><h3>Stock</h3><p>{{item.amount}}</p></div>
+        </header>
+        <h3>Aujourd'hui</h3>
+        <div class="counter"><h4>Stock</h4><p>{{item.amount}}</p></div>
+        <div class="counter"><h4>$</h4><p>{{item.price}}</p></div>
+        <div class="col-md-6 col-xs-12 button-container">
+          <button ng-click="item.buy(1)">Acheter 1 {{item.name}}</button>
+        </div>
+        <div class="col-md-6 col-xs-12 button-container">
+          <button ng-click="item.sell(1)">Vendre 1 {{item.name}}</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <canvas id="line" class="chart chart-line" data="data"
+  labels="labels" legend="true" series="series"
+  click="onClick">
+  </canvas>
+</div>
